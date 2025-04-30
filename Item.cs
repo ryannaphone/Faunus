@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace faunusVB
 {
-    internal class Item
+    public class Item
     {
-        string name;
+        public string name;
+        public int amount;
+
+        public Item(string name, int amount)
+        {
+            this.Name = name;
+            this.Amount = amount;
+        }
+
+        public string Name { get => name; set => name = value; }
+        public int Amount { get => amount; set => amount = value; }
+
+        override public string ToString()
+        {
+            return Name + " : " + Amount;
+        }
     }
 }

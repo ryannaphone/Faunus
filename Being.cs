@@ -7,38 +7,42 @@ using System.Threading.Tasks;
 namespace faunusVB
 {
    
-    internal class Being
+    public class Being
     {
-        string name; // String representing the name of the being
-        Location[] loc; // Location object array, represents where the being is
-        long age; // Long representing the age in days of the being
-        Item[] items; // Item object array representing the inventory of the being
-        int amount; // int representing amount of beings in this being (Used for bugs)
+        public string type;
+        public string name; // String representing the name of the being
+        public List<Location> loc; // Location object array, represents where the being is
+        public long age; // Long representing the age in days of the being
+        public List<Item> items; // Item object array representing the inventory of the being
+        public List<int> amount; // int representing amount of beings in this being (Used for bugs, plants, etc.)
 
-        int health; // int representing the health amount a being has
-        int energy; // int representing the amount of energy a being has
-        int sanity; // int representing the amount of sanity a being has
-        int hunger; // int representing the amount of hunger a being has
-        int thirst; // int representing the amount of thirst a being has
+        public int health; // int representing the health amount a being has
+        public int energy; // int representing the amount of energy a being has
+        public int sanity; // int representing the amount of sanity a being has
+        public int hunger; // int representing the amount of hunger a being has
+        public int thirst; // int representing the amount of thirst a being has
+        public int radtiation; // int representing how irradiated a being is
+        public float pH; // float representing the pH of a being
 
-        int healthMax; // int representing the health amount a being has
-        int energyMax; // int representing the health amount a being has
-        int sanityMax; // int representing the health amount a being has
-        int hungerMax; // int representing the health amount a being has
-        int thirstMax; // int representing the health amount a being has
+        public int healthMax; // int representing the health amount a being has
+        public int energyMax; // int representing the health amount a being has
+        public int sanityMax; // int representing the health amount a being has
+        public int hungerMax; // int representing the health amount a being has
+        public int thirstMax; // int representing the health amount a being has
 
-        int healthChangePerDay;
-        int energyChangePerDay;
-        int sanityChangePerDay;
-        int hungerChangePerDay;
-        int thirstChangePerDay;
+        public int healthChangePerDay; // int representing how much health stat will change at end of day
+        public int energyChangePerDay; // int representing how much energy stat will change at end of day
+        public int sanityChangePerDay; // int representing how much sanity stat will change at end of day
+        public int hungerChangePerDay; // int representing how much hunger stat will change at end of day
+        public int thirstChangePerDay; // int representing how much thirst stat will change at end of day
 
-        
 
-        static Item[] defaultInventory = emptyInventory();
-        static int defaultAmount = 1;
-        static int defaultHealth = 100;
-        static int defaultEnergy = 25;
+
+        public static List<Item> defaultInventory = emptyInventory(); // create an empty item array to serve as default inventory
+        public static int defaultAge = 0;
+        public static List<int> defaultAmount = new List<int> {1}; // create an int to serve as default amount value
+        public static int defaultHealth = 100; // create an int to serve as default health value
+        public static int defaultEnergy = 25;
         static int defaultSanity = 100;
         static int defaultHunger = 0;
         static int defaultThirst = 0;
@@ -52,21 +56,70 @@ namespace faunusVB
         static int defaultSanityChangePerDay = 0;
         static int defaultHungerChangePerDay = 0;
         static int defaultThirstChangePerDay = 0;
-        
-  
 
-        public Being(string name, Location[] loc)
+        public int level;
+        public int intelligenceLvl;
+        public int strengthLvl;
+        public int staminaLvl;
+        public int resilienceLvl;
+        public int perceptionLvl;
+        public int ingenuityLvl;
+        public int composureLvl;
+
+        public int defaultLevel = 1;
+        public int defaultIntelligenceLvl = 1;
+        public int defaultStrengthLvl = 1;
+        public int defaultStaminaLvl = 1;
+        public int defaultResilienceLvl = 1;
+        public int defaultPerceptionLvl = 1;
+        public int defaultIngenuityLvl = 1;
+        public int defaultComposureLvl = 1;
+
+        public Being(string type, string name, List<Location> loc)
         {
-            this(name, loc, 0, emptyInventory(), defaultInventory, defaultAmount, defaultHealth, defaultEnergy,
-                defaultSanity, defaultHunger, defaultThirst, defaultHealthMax, 100, );
+            this.type = type;
+            this.name = name; // Set name of new being to given name
+            this.loc = loc; // Set location array of new being to given location array
+            this.age = defaultAge; // Set age of new being to given age
+            this.items = emptyInventory(); ; // Set item array of new being to given item array
+            this.amount = defaultAmount;
+
+            this.health = defaultHealth;
+            this.energy = defaultEnergy;
+            this.sanity = defaultSanity;
+            this.hunger = defaultHunger;
+            this.thirst = defaultThirst;
+
+            this.healthMax = defaultHealthMax;
+            this.energyMax = defaultEnergyMax;
+            this.sanityMax = defaultSanityMax;
+            this.hungerMax = defaultHungerMax;
+            this.thirstMax = defaultThirstMax;
+
+            this.healthChangePerDay = defaultHealthChangePerDay;
+            this.energyChangePerDay = defaultEnergyChangePerDay;
+            this.sanityChangePerDay = defaultSanityChangePerDay;
+            this.hungerChangePerDay = defaultHungerChangePerDay;
+            this.thirstChangePerDay = defaultThirstChangePerDay;
+
+            this.level = defaultLevel;
+            this.intelligenceLvl = defaultIntelligenceLvl;
+            this.strengthLvl = defaultStrengthLvl;
+            this.staminaLvl = defaultStaminaLvl;
+            this.resilienceLvl = defaultResilienceLvl;
+            this.perceptionLvl = defaultPerceptionLvl;
+            this.ingenuityLvl = defaultIngenuityLvl;
+            this.composureLvl = defaultComposureLvl;
         }
 
-        public Being(string name, Location[] loc, long age, Item[] items, int amount, int health, int energy,
+        public Being(string type, string name, List<Location> loc, long age, List<Item> items, List<int> amount, int health, int energy,
             int sanity, int hunger, int thirst, int healthMax, int energyMax, int sanityMax, int hungerMax,
             int thirstMax, int healthChangePerDay, int energyChangePerDay, int sanityChangePerDay, int hungerChangePerDay,
-            int thirstChangePerDay
+            int thirstChangePerDay, int level, int intelligenceLvl, int strengthLvl, int staminaLvl, int resilienceLvl,
+            int perceptionLvl, int ingenuityLvl, int composureLvl
             ) // All parameter constructor
         {
+            this.type = type;
             this.name = name; // Set name of new being to given name
             this.loc = loc; // Set location array of new being to given location array
             this.age = age; // Set age of new being to given age
@@ -91,26 +144,25 @@ namespace faunusVB
             this.hungerChangePerDay = hungerChangePerDay;
             this.thirstChangePerDay = thirstChangePerDay;
 
+            this.level = defaultLevel;
+            this.intelligenceLvl = defaultIntelligenceLvl;
+            this.strengthLvl = defaultStrengthLvl;
+            this.staminaLvl = defaultStaminaLvl;
+            this.resilienceLvl = defaultResilienceLvl;
+            this.perceptionLvl = defaultPerceptionLvl;
+            this.ingenuityLvl = defaultIngenuityLvl;
+            this.composureLvl = defaultComposureLvl;
 
         }
 
+       
+
+        public static List<Item> emptyInventory()
+        {
+            return new List<Item>() ;
+        }
 
     }
-
-    internal class Player : Being
-    {
-        int intelligenceLvl;
-        int strengthLvl;
-        int staminaLvl;
-        int resilienceLvl;
-        int perceptionLvl;
-        int ingenuityLvl;
-        int composureLvl;
-
-    }
-
-    Item[] emptyInventory()
-    {
-        return new Item[0];
-    }
+    
+    
 }
