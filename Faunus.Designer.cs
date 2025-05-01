@@ -43,8 +43,9 @@
             actionTabControl = new TabControl();
             interactTab = new TabPage();
             tabletPanel = new Panel();
-            startPanel = new Panel();
             button2 = new Button();
+            startPanel = new Panel();
+            pickUpTabulaButton = new Button();
             tabulaTab = new TabPage();
             tabulaUpgradePanel = new Panel();
             panel6 = new Panel();
@@ -115,12 +116,41 @@
             button3 = new Button();
             gatherTab = new TabPage();
             panel7 = new Panel();
+            gatherGrubButton = new Button();
             gatherDirtButton = new Button();
+            itemsTab = new TabPage();
+            combinePanel = new Panel();
+            combineComboBox3 = new ComboBox();
+            combineAmountComboBox3 = new ComboBox();
+            combineAndLabel = new Label();
+            threeItemsCheckBox = new CheckBox();
+            twoItemsCheckBox = new CheckBox();
+            combineComboBox2 = new ComboBox();
+            combineAmountComboBox2 = new ComboBox();
+            label9 = new Label();
+            combineButton = new Button();
+            combineComboBox1 = new ComboBox();
+            label8 = new Label();
+            combineAmountComboBox1 = new ComboBox();
+            combineItemsLabel = new Label();
+            consumePanel = new Panel();
+            consumeButton = new Button();
+            consumeItemComboBox = new ComboBox();
+            label6 = new Label();
+            consumeNumComboBox = new ComboBox();
+            label7 = new Label();
+            dropPanel = new Panel();
+            discardButton = new Button();
+            discardItemComboBox = new ComboBox();
+            label5 = new Label();
+            discardNumComboBox = new ComboBox();
+            label4 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             actionTabControl.SuspendLayout();
             interactTab.SuspendLayout();
+            tabletPanel.SuspendLayout();
             startPanel.SuspendLayout();
             tabulaTab.SuspendLayout();
             panel6.SuspendLayout();
@@ -131,6 +161,10 @@
             mapPanel.SuspendLayout();
             gatherTab.SuspendLayout();
             panel7.SuspendLayout();
+            itemsTab.SuspendLayout();
+            combinePanel.SuspendLayout();
+            consumePanel.SuspendLayout();
+            dropPanel.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -219,6 +253,7 @@
             // 
             // button1
             // 
+            button1.DialogResult = DialogResult.OK;
             button1.Font = new Font("Univers Extended", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(1349, 3);
             button1.Name = "button1";
@@ -245,9 +280,9 @@
             inventoryLabel.Font = new Font("Univers Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             inventoryLabel.Location = new Point(1195, 24);
             inventoryLabel.Name = "inventoryLabel";
-            inventoryLabel.Size = new Size(155, 47);
+            inventoryLabel.Size = new Size(390, 47);
             inventoryLabel.TabIndex = 2;
-            inventoryLabel.Text = "Inventory:";
+            inventoryLabel.Text = "Inventory  ----- Capacity 0/0";
             // 
             // inventoryListBox
             // 
@@ -265,6 +300,7 @@
             actionTabControl.Controls.Add(tabulaTab);
             actionTabControl.Controls.Add(exploreTab);
             actionTabControl.Controls.Add(gatherTab);
+            actionTabControl.Controls.Add(itemsTab);
             actionTabControl.Location = new Point(12, 24);
             actionTabControl.Name = "actionTabControl";
             actionTabControl.SelectedIndex = 0;
@@ -285,29 +321,39 @@
             // 
             // tabletPanel
             // 
+            tabletPanel.Controls.Add(button2);
             tabletPanel.Location = new Point(6, 6);
             tabletPanel.Name = "tabletPanel";
             tabletPanel.Size = new Size(344, 722);
             tabletPanel.TabIndex = 2;
             // 
+            // button2
+            // 
+            button2.Location = new Point(3, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(338, 105);
+            button2.TabIndex = 0;
+            button2.Text = "Pick up Tabula™ upgrade module";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // startPanel
             // 
-            startPanel.Controls.Add(button2);
+            startPanel.Controls.Add(pickUpTabulaButton);
             startPanel.Location = new Point(6, 6);
             startPanel.Name = "startPanel";
             startPanel.Size = new Size(1145, 722);
             startPanel.TabIndex = 1;
             // 
-            // button2
+            // pickUpTabulaButton
             // 
-            button2.Font = new Font("Univers", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(153, 164);
-            button2.Name = "button2";
-            button2.Size = new Size(852, 390);
-            button2.TabIndex = 1;
-            button2.Text = "Pick Up Stone Tablet";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            pickUpTabulaButton.Font = new Font("Univers", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            pickUpTabulaButton.Location = new Point(153, 164);
+            pickUpTabulaButton.Name = "pickUpTabulaButton";
+            pickUpTabulaButton.Size = new Size(852, 390);
+            pickUpTabulaButton.TabIndex = 1;
+            pickUpTabulaButton.Text = "Pick Up Stone Tablet";
+            pickUpTabulaButton.UseVisualStyleBackColor = true;
+            pickUpTabulaButton.Click += button2_Click;
             // 
             // tabulaTab
             // 
@@ -347,6 +393,7 @@
             whatCanIEatButton.TabIndex = 1;
             whatCanIEatButton.Text = "What can I eat?";
             whatCanIEatButton.UseVisualStyleBackColor = true;
+            whatCanIEatButton.Click += whatCanIEatButton_Click;
             // 
             // whatShouldIDoButton
             // 
@@ -405,6 +452,7 @@
             whereIsTheNearestStoreButton.TabIndex = 3;
             whereIsTheNearestStoreButton.Text = "Where is the nearest store?";
             whereIsTheNearestStoreButton.UseVisualStyleBackColor = true;
+            whereIsTheNearestStoreButton.Click += whereIsTheNearestStoreButton_Click;
             // 
             // howCanIUpgradeYouButton
             // 
@@ -550,7 +598,7 @@
             button45.Name = "button45";
             button45.Size = new Size(114, 76);
             button45.TabIndex = 55;
-            button45.Text = "button45";
+            button45.Text = "????";
             button45.UseVisualStyleBackColor = true;
             // 
             // button46
@@ -559,7 +607,7 @@
             button46.Name = "button46";
             button46.Size = new Size(114, 76);
             button46.TabIndex = 54;
-            button46.Text = "button46";
+            button46.Text = "????";
             button46.UseVisualStyleBackColor = true;
             // 
             // button47
@@ -568,7 +616,7 @@
             button47.Name = "button47";
             button47.Size = new Size(114, 76);
             button47.TabIndex = 53;
-            button47.Text = "button47";
+            button47.Text = "????";
             button47.UseVisualStyleBackColor = true;
             // 
             // button48
@@ -577,7 +625,7 @@
             button48.Name = "button48";
             button48.Size = new Size(114, 76);
             button48.TabIndex = 52;
-            button48.Text = "button48";
+            button48.Text = "????";
             button48.UseVisualStyleBackColor = true;
             // 
             // button49
@@ -586,7 +634,7 @@
             button49.Name = "button49";
             button49.Size = new Size(114, 76);
             button49.TabIndex = 51;
-            button49.Text = "button49";
+            button49.Text = "????";
             button49.UseVisualStyleBackColor = true;
             // 
             // button50
@@ -595,7 +643,7 @@
             button50.Name = "button50";
             button50.Size = new Size(114, 76);
             button50.TabIndex = 50;
-            button50.Text = "button50";
+            button50.Text = "????";
             button50.UseVisualStyleBackColor = true;
             // 
             // button51
@@ -604,7 +652,7 @@
             button51.Name = "button51";
             button51.Size = new Size(114, 76);
             button51.TabIndex = 49;
-            button51.Text = "button51";
+            button51.Text = "????";
             button51.UseVisualStyleBackColor = true;
             // 
             // button38
@@ -613,7 +661,7 @@
             button38.Name = "button38";
             button38.Size = new Size(114, 76);
             button38.TabIndex = 48;
-            button38.Text = "button38";
+            button38.Text = "????";
             button38.UseVisualStyleBackColor = true;
             // 
             // button39
@@ -622,7 +670,7 @@
             button39.Name = "button39";
             button39.Size = new Size(114, 76);
             button39.TabIndex = 47;
-            button39.Text = "button39";
+            button39.Text = "????";
             button39.UseVisualStyleBackColor = true;
             // 
             // button40
@@ -631,7 +679,7 @@
             button40.Name = "button40";
             button40.Size = new Size(114, 76);
             button40.TabIndex = 46;
-            button40.Text = "button40";
+            button40.Text = "????";
             button40.UseVisualStyleBackColor = true;
             // 
             // button41
@@ -649,7 +697,7 @@
             button42.Name = "button42";
             button42.Size = new Size(114, 76);
             button42.TabIndex = 44;
-            button42.Text = "button42";
+            button42.Text = "????";
             button42.UseVisualStyleBackColor = true;
             // 
             // button43
@@ -658,7 +706,7 @@
             button43.Name = "button43";
             button43.Size = new Size(114, 76);
             button43.TabIndex = 43;
-            button43.Text = "button43";
+            button43.Text = "????";
             button43.UseVisualStyleBackColor = true;
             // 
             // button44
@@ -667,7 +715,7 @@
             button44.Name = "button44";
             button44.Size = new Size(114, 76);
             button44.TabIndex = 42;
-            button44.Text = "button44";
+            button44.Text = "????";
             button44.UseVisualStyleBackColor = true;
             // 
             // button31
@@ -676,7 +724,7 @@
             button31.Name = "button31";
             button31.Size = new Size(114, 76);
             button31.TabIndex = 41;
-            button31.Text = "button31";
+            button31.Text = "????";
             button31.UseVisualStyleBackColor = true;
             // 
             // button32
@@ -685,7 +733,7 @@
             button32.Name = "button32";
             button32.Size = new Size(114, 76);
             button32.TabIndex = 40;
-            button32.Text = "button32";
+            button32.Text = "????";
             button32.UseVisualStyleBackColor = true;
             // 
             // button33
@@ -730,7 +778,7 @@
             button37.Name = "button37";
             button37.Size = new Size(114, 76);
             button37.TabIndex = 35;
-            button37.Text = "button37";
+            button37.Text = "????";
             button37.UseVisualStyleBackColor = true;
             // 
             // button24
@@ -739,7 +787,7 @@
             button24.Name = "button24";
             button24.Size = new Size(114, 76);
             button24.TabIndex = 34;
-            button24.Text = "button24";
+            button24.Text = "????";
             button24.UseVisualStyleBackColor = true;
             // 
             // button25
@@ -795,7 +843,7 @@
             button30.Name = "button30";
             button30.Size = new Size(114, 76);
             button30.TabIndex = 28;
-            button30.Text = "button30";
+            button30.Text = "????";
             button30.UseVisualStyleBackColor = true;
             // 
             // button17
@@ -804,7 +852,7 @@
             button17.Name = "button17";
             button17.Size = new Size(114, 76);
             button17.TabIndex = 27;
-            button17.Text = "button17";
+            button17.Text = "????";
             button17.UseVisualStyleBackColor = true;
             // 
             // button18
@@ -849,7 +897,7 @@
             button22.Name = "button22";
             button22.Size = new Size(114, 76);
             button22.TabIndex = 22;
-            button22.Text = "button22";
+            button22.Text = "????";
             button22.UseVisualStyleBackColor = true;
             // 
             // button23
@@ -858,7 +906,7 @@
             button23.Name = "button23";
             button23.Size = new Size(114, 76);
             button23.TabIndex = 21;
-            button23.Text = "button23";
+            button23.Text = "????";
             button23.UseVisualStyleBackColor = true;
             // 
             // button10
@@ -867,7 +915,7 @@
             button10.Name = "button10";
             button10.Size = new Size(114, 76);
             button10.TabIndex = 20;
-            button10.Text = "button10";
+            button10.Text = "????";
             button10.UseVisualStyleBackColor = true;
             // 
             // button11
@@ -885,7 +933,7 @@
             button12.Name = "button12";
             button12.Size = new Size(114, 76);
             button12.TabIndex = 18;
-            button12.Text = "button12";
+            button12.Text = "????";
             button12.UseVisualStyleBackColor = true;
             // 
             // button13
@@ -894,7 +942,7 @@
             button13.Name = "button13";
             button13.Size = new Size(114, 76);
             button13.TabIndex = 17;
-            button13.Text = "button13";
+            button13.Text = "????";
             button13.UseVisualStyleBackColor = true;
             // 
             // button14
@@ -903,7 +951,7 @@
             button14.Name = "button14";
             button14.Size = new Size(114, 76);
             button14.TabIndex = 16;
-            button14.Text = "button14";
+            button14.Text = "????";
             button14.UseVisualStyleBackColor = true;
             // 
             // button15
@@ -912,7 +960,7 @@
             button15.Name = "button15";
             button15.Size = new Size(114, 76);
             button15.TabIndex = 15;
-            button15.Text = "button15";
+            button15.Text = "????";
             button15.UseVisualStyleBackColor = true;
             // 
             // button16
@@ -921,7 +969,7 @@
             button16.Name = "button16";
             button16.Size = new Size(114, 76);
             button16.TabIndex = 14;
-            button16.Text = "button16";
+            button16.Text = "????";
             button16.UseVisualStyleBackColor = true;
             // 
             // button9
@@ -930,7 +978,7 @@
             button9.Name = "button9";
             button9.Size = new Size(114, 76);
             button9.TabIndex = 13;
-            button9.Text = "button9";
+            button9.Text = "????";
             button9.UseVisualStyleBackColor = true;
             // 
             // button8
@@ -939,7 +987,7 @@
             button8.Name = "button8";
             button8.Size = new Size(114, 76);
             button8.TabIndex = 12;
-            button8.Text = "button8";
+            button8.Text = "????";
             button8.UseVisualStyleBackColor = true;
             // 
             // button7
@@ -948,7 +996,7 @@
             button7.Name = "button7";
             button7.Size = new Size(114, 76);
             button7.TabIndex = 11;
-            button7.Text = "button7";
+            button7.Text = "????";
             button7.UseVisualStyleBackColor = true;
             // 
             // button6
@@ -957,7 +1005,7 @@
             button6.Name = "button6";
             button6.Size = new Size(114, 76);
             button6.TabIndex = 10;
-            button6.Text = "button6";
+            button6.Text = "????";
             button6.UseVisualStyleBackColor = true;
             // 
             // button5
@@ -966,7 +1014,7 @@
             button5.Name = "button5";
             button5.Size = new Size(114, 76);
             button5.TabIndex = 9;
-            button5.Text = "button5";
+            button5.Text = "????";
             button5.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -975,7 +1023,7 @@
             button4.Name = "button4";
             button4.Size = new Size(114, 76);
             button4.TabIndex = 8;
-            button4.Text = "button4";
+            button4.Text = "????";
             button4.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -984,7 +1032,7 @@
             button3.Name = "button3";
             button3.Size = new Size(114, 76);
             button3.TabIndex = 7;
-            button3.Text = "button3";
+            button3.Text = "????";
             button3.UseVisualStyleBackColor = true;
             // 
             // gatherTab
@@ -1000,11 +1048,22 @@
             // 
             // panel7
             // 
+            panel7.Controls.Add(gatherGrubButton);
             panel7.Controls.Add(gatherDirtButton);
             panel7.Location = new Point(6, 6);
             panel7.Name = "panel7";
             panel7.Size = new Size(286, 250);
             panel7.TabIndex = 0;
+            // 
+            // gatherGrubButton
+            // 
+            gatherGrubButton.Location = new Point(3, 67);
+            gatherGrubButton.Name = "gatherGrubButton";
+            gatherGrubButton.Size = new Size(280, 58);
+            gatherGrubButton.TabIndex = 1;
+            gatherGrubButton.Text = "Grubs";
+            gatherGrubButton.UseVisualStyleBackColor = true;
+            gatherGrubButton.Click += gatherGrubButton_Click;
             // 
             // gatherDirtButton
             // 
@@ -1014,7 +1073,287 @@
             gatherDirtButton.TabIndex = 0;
             gatherDirtButton.Text = "Dirt";
             gatherDirtButton.UseVisualStyleBackColor = true;
-            gatherDirtButton.Click += button27_Click;
+            gatherDirtButton.Click += gatherDirtButton_Click;
+            // 
+            // itemsTab
+            // 
+            itemsTab.Controls.Add(combinePanel);
+            itemsTab.Controls.Add(consumePanel);
+            itemsTab.Controls.Add(dropPanel);
+            itemsTab.Location = new Point(10, 58);
+            itemsTab.Name = "itemsTab";
+            itemsTab.Padding = new Padding(3);
+            itemsTab.Size = new Size(1157, 734);
+            itemsTab.TabIndex = 4;
+            itemsTab.Text = "Items";
+            itemsTab.UseVisualStyleBackColor = true;
+            // 
+            // combinePanel
+            // 
+            combinePanel.Controls.Add(combineComboBox3);
+            combinePanel.Controls.Add(combineAmountComboBox3);
+            combinePanel.Controls.Add(combineAndLabel);
+            combinePanel.Controls.Add(threeItemsCheckBox);
+            combinePanel.Controls.Add(twoItemsCheckBox);
+            combinePanel.Controls.Add(combineComboBox2);
+            combinePanel.Controls.Add(combineAmountComboBox2);
+            combinePanel.Controls.Add(label9);
+            combinePanel.Controls.Add(combineButton);
+            combinePanel.Controls.Add(combineComboBox1);
+            combinePanel.Controls.Add(label8);
+            combinePanel.Controls.Add(combineAmountComboBox1);
+            combinePanel.Controls.Add(combineItemsLabel);
+            combinePanel.Location = new Point(6, 411);
+            combinePanel.Name = "combinePanel";
+            combinePanel.Size = new Size(1145, 317);
+            combinePanel.TabIndex = 2;
+            // 
+            // combineComboBox3
+            // 
+            combineComboBox3.FormattingEnabled = true;
+            combineComboBox3.Location = new Point(307, 249);
+            combineComboBox3.Name = "combineComboBox3";
+            combineComboBox3.Size = new Size(339, 49);
+            combineComboBox3.TabIndex = 71;
+            // 
+            // combineAmountComboBox3
+            // 
+            combineAmountComboBox3.FormattingEnabled = true;
+            combineAmountComboBox3.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
+            combineAmountComboBox3.Location = new Point(159, 249);
+            combineAmountComboBox3.Name = "combineAmountComboBox3";
+            combineAmountComboBox3.Size = new Size(123, 49);
+            combineAmountComboBox3.TabIndex = 70;
+            // 
+            // combineAndLabel
+            // 
+            combineAndLabel.AutoSize = true;
+            combineAndLabel.Font = new Font("Univers Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            combineAndLabel.Location = new Point(52, 251);
+            combineAndLabel.Name = "combineAndLabel";
+            combineAndLabel.Size = new Size(68, 47);
+            combineAndLabel.TabIndex = 69;
+            combineAndLabel.Text = "and";
+            // 
+            // threeItemsCheckBox
+            // 
+            threeItemsCheckBox.AutoSize = true;
+            threeItemsCheckBox.Location = new Point(833, 27);
+            threeItemsCheckBox.Name = "threeItemsCheckBox";
+            threeItemsCheckBox.Size = new Size(153, 45);
+            threeItemsCheckBox.TabIndex = 68;
+            threeItemsCheckBox.Text = "3 Items";
+            threeItemsCheckBox.UseVisualStyleBackColor = true;
+            threeItemsCheckBox.CheckedChanged += threeItemsCheckBox_CheckedChanged;
+            // 
+            // twoItemsCheckBox
+            // 
+            twoItemsCheckBox.AutoSize = true;
+            twoItemsCheckBox.Checked = true;
+            twoItemsCheckBox.CheckState = CheckState.Checked;
+            twoItemsCheckBox.Location = new Point(683, 27);
+            twoItemsCheckBox.Name = "twoItemsCheckBox";
+            twoItemsCheckBox.Size = new Size(153, 45);
+            twoItemsCheckBox.TabIndex = 67;
+            twoItemsCheckBox.Text = "2 Items";
+            twoItemsCheckBox.UseVisualStyleBackColor = true;
+            twoItemsCheckBox.CheckedChanged += twoItemsCheckBox_CheckedChanged;
+            // 
+            // combineComboBox2
+            // 
+            combineComboBox2.FormattingEnabled = true;
+            combineComboBox2.Location = new Point(307, 174);
+            combineComboBox2.Name = "combineComboBox2";
+            combineComboBox2.Size = new Size(339, 49);
+            combineComboBox2.TabIndex = 66;
+            // 
+            // combineAmountComboBox2
+            // 
+            combineAmountComboBox2.FormattingEnabled = true;
+            combineAmountComboBox2.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
+            combineAmountComboBox2.Location = new Point(159, 174);
+            combineAmountComboBox2.Name = "combineAmountComboBox2";
+            combineAmountComboBox2.Size = new Size(123, 49);
+            combineAmountComboBox2.TabIndex = 65;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Univers Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(52, 176);
+            label9.Name = "label9";
+            label9.Size = new Size(81, 47);
+            label9.TabIndex = 64;
+            label9.Text = "with";
+            // 
+            // combineButton
+            // 
+            combineButton.Location = new Point(683, 165);
+            combineButton.Name = "combineButton";
+            combineButton.RightToLeft = RightToLeft.Yes;
+            combineButton.Size = new Size(188, 58);
+            combineButton.TabIndex = 63;
+            combineButton.Text = "Combine";
+            combineButton.UseVisualStyleBackColor = true;
+            // 
+            // combineComboBox1
+            // 
+            combineComboBox1.FormattingEnabled = true;
+            combineComboBox1.Location = new Point(307, 105);
+            combineComboBox1.Name = "combineComboBox1";
+            combineComboBox1.Size = new Size(339, 49);
+            combineComboBox1.TabIndex = 62;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Univers Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(12, 105);
+            label8.Name = "label8";
+            label8.Size = new Size(134, 47);
+            label8.TabIndex = 61;
+            label8.Text = "Combine";
+            // 
+            // combineAmountComboBox1
+            // 
+            combineAmountComboBox1.FormattingEnabled = true;
+            combineAmountComboBox1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
+            combineAmountComboBox1.Location = new Point(159, 105);
+            combineAmountComboBox1.Name = "combineAmountComboBox1";
+            combineAmountComboBox1.Size = new Size(123, 49);
+            combineAmountComboBox1.TabIndex = 60;
+            // 
+            // combineItemsLabel
+            // 
+            combineItemsLabel.AutoSize = true;
+            combineItemsLabel.Font = new Font("Univers Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            combineItemsLabel.Location = new Point(12, 9);
+            combineItemsLabel.Name = "combineItemsLabel";
+            combineItemsLabel.Size = new Size(216, 47);
+            combineItemsLabel.TabIndex = 59;
+            combineItemsLabel.Text = "Combine items";
+            // 
+            // consumePanel
+            // 
+            consumePanel.Controls.Add(consumeButton);
+            consumePanel.Controls.Add(consumeItemComboBox);
+            consumePanel.Controls.Add(label6);
+            consumePanel.Controls.Add(consumeNumComboBox);
+            consumePanel.Controls.Add(label7);
+            consumePanel.Location = new Point(6, 206);
+            consumePanel.Name = "consumePanel";
+            consumePanel.Size = new Size(1145, 199);
+            consumePanel.TabIndex = 1;
+            // 
+            // consumeButton
+            // 
+            consumeButton.Location = new Point(683, 99);
+            consumeButton.Name = "consumeButton";
+            consumeButton.RightToLeft = RightToLeft.Yes;
+            consumeButton.Size = new Size(188, 58);
+            consumeButton.TabIndex = 63;
+            consumeButton.Text = "Consume";
+            consumeButton.UseVisualStyleBackColor = true;
+            consumeButton.Click += consumeButton_Click;
+            // 
+            // consumeItemComboBox
+            // 
+            consumeItemComboBox.FormattingEnabled = true;
+            consumeItemComboBox.Location = new Point(307, 105);
+            consumeItemComboBox.Name = "consumeItemComboBox";
+            consumeItemComboBox.Size = new Size(339, 49);
+            consumeItemComboBox.TabIndex = 62;
+            consumeItemComboBox.SelectedIndexChanged += consumeItemComboBox_SelectedIndexChanged;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Univers Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(12, 105);
+            label6.Name = "label6";
+            label6.Size = new Size(142, 47);
+            label6.TabIndex = 61;
+            label6.Text = "Consume";
+            // 
+            // consumeNumComboBox
+            // 
+            consumeNumComboBox.FormattingEnabled = true;
+            consumeNumComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
+            consumeNumComboBox.Location = new Point(159, 105);
+            consumeNumComboBox.Name = "consumeNumComboBox";
+            consumeNumComboBox.Size = new Size(123, 49);
+            consumeNumComboBox.TabIndex = 60;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Univers Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(12, 9);
+            label7.Name = "label7";
+            label7.Size = new Size(250, 47);
+            label7.TabIndex = 59;
+            label7.Text = "Consume an item";
+            // 
+            // dropPanel
+            // 
+            dropPanel.Controls.Add(discardButton);
+            dropPanel.Controls.Add(discardItemComboBox);
+            dropPanel.Controls.Add(label5);
+            dropPanel.Controls.Add(discardNumComboBox);
+            dropPanel.Controls.Add(label4);
+            dropPanel.Location = new Point(6, 6);
+            dropPanel.Name = "dropPanel";
+            dropPanel.Size = new Size(1145, 194);
+            dropPanel.TabIndex = 0;
+            // 
+            // discardButton
+            // 
+            discardButton.Location = new Point(683, 99);
+            discardButton.Name = "discardButton";
+            discardButton.RightToLeft = RightToLeft.Yes;
+            discardButton.Size = new Size(188, 58);
+            discardButton.TabIndex = 63;
+            discardButton.Text = "Drop";
+            discardButton.UseVisualStyleBackColor = true;
+            discardButton.Click += discardButton_Click;
+            // 
+            // discardItemComboBox
+            // 
+            discardItemComboBox.FormattingEnabled = true;
+            discardItemComboBox.Location = new Point(307, 105);
+            discardItemComboBox.Name = "discardItemComboBox";
+            discardItemComboBox.Size = new Size(339, 49);
+            discardItemComboBox.TabIndex = 62;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Univers Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(12, 105);
+            label5.Name = "label5";
+            label5.Size = new Size(84, 47);
+            label5.TabIndex = 61;
+            label5.Text = "Drop";
+            // 
+            // discardNumComboBox
+            // 
+            discardNumComboBox.FormattingEnabled = true;
+            discardNumComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
+            discardNumComboBox.Location = new Point(159, 105);
+            discardNumComboBox.Name = "discardNumComboBox";
+            discardNumComboBox.Size = new Size(123, 49);
+            discardNumComboBox.TabIndex = 60;
+            discardNumComboBox.SelectedIndexChanged += discardNumComboBox_SelectedIndexChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Univers Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(12, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(192, 47);
+            label4.TabIndex = 59;
+            label4.Text = "Drop an item";
             // 
             // Faunus
             // 
@@ -1038,6 +1377,7 @@
             panel3.PerformLayout();
             actionTabControl.ResumeLayout(false);
             interactTab.ResumeLayout(false);
+            tabletPanel.ResumeLayout(false);
             startPanel.ResumeLayout(false);
             tabulaTab.ResumeLayout(false);
             panel6.ResumeLayout(false);
@@ -1050,6 +1390,13 @@
             mapPanel.PerformLayout();
             gatherTab.ResumeLayout(false);
             panel7.ResumeLayout(false);
+            itemsTab.ResumeLayout(false);
+            combinePanel.ResumeLayout(false);
+            combinePanel.PerformLayout();
+            consumePanel.ResumeLayout(false);
+            consumePanel.PerformLayout();
+            dropPanel.ResumeLayout(false);
+            dropPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1072,7 +1419,7 @@
         private TabPage gatherTab;
         private TabPage interactTab;
         private Panel startPanel;
-        private Button button2;
+        private Button pickUpTabulaButton;
         private Panel tabletPanel;
         private Panel panel5;
         private Button whatIsThisButton;
@@ -1143,5 +1490,34 @@
         private Button exploreNearby;
         private Panel panel7;
         private Button gatherDirtButton;
+        private TabPage itemsTab;
+        private Panel dropPanel;
+        private ComboBox discardNumComboBox;
+        private Label label4;
+        private Label label5;
+        private Panel consumePanel;
+        private Button consumeButton;
+        private ComboBox consumeItemComboBox;
+        private Label label6;
+        private ComboBox consumeNumComboBox;
+        private Label label7;
+        private Button discardButton;
+        private ComboBox discardItemComboBox;
+        private Panel combinePanel;
+        private ComboBox combineComboBox3;
+        private ComboBox combineAmountComboBox3;
+        private Label combineAndLabel;
+        private CheckBox threeItemsCheckBox;
+        private CheckBox twoItemsCheckBox;
+        private ComboBox combineComboBox2;
+        private ComboBox combineAmountComboBox2;
+        private Label label9;
+        private Button combineButton;
+        private ComboBox combineComboBox1;
+        private Label label8;
+        private ComboBox combineAmountComboBox1;
+        private Label combineItemsLabel;
+        private Button button2;
+        private Button gatherGrubButton;
     }
 }
