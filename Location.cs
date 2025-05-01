@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace faunusVB
 {
-    internal class Location
+    public class Location
     {
-        string name;
+        public string name;
+        public int buildableLand;
 
+        public Location(string name, int buildableLand)
+        {
+            this.name = name;
+            this.buildableLand = buildableLand;
+        }
     }
 }
